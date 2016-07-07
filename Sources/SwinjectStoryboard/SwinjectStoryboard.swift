@@ -126,6 +126,10 @@ public class SwinjectStoryboard: _SwinjectStoryboardBase, SwinjectStoryboardType
             for child in viewController.childViewControllers {
                 injectDependency(child)
             }
+        } else if let windowController = controller as? NSWindowController {
+            if windowController.contentViewController != nil {
+                injectDependency(windowController.contentViewController!)
+            }
         }
     }
 #endif
